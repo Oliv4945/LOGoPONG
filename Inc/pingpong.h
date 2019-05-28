@@ -13,8 +13,8 @@ class PingPong: public GameEngine {
         int8_t dir;
         int16_t ball_position;
 
-        const pixel_Type symbol_middle = {255, 0, 0};
-        const pixel_Type symbol_ball = {0, 0, 255};
+        const pixel_Type symbol_middle = {255*brighness/100, 0, 0};
+        const pixel_Type symbol_ball = {0, 0, 255*brighness/100};
 
         static bool checkZone(uint8_t ball_position, uint8_t start, uint8_t end);
 };

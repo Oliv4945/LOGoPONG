@@ -37,12 +37,12 @@ class GameEngine {
         Game_States getState(void);
         void setPlayerWin(uint8_t player);
 
-        const pixel_Type symbol_end = {255, 255, 0};
-        const pixel_Type symbol_zone = {153, 255, 51};
+        const pixel_Type symbol_end = {255*brighness/100, 255*brighness/100, 0};
+        const pixel_Type symbol_zone = {153*brighness/100, 255*brighness/100, 51*brighness/100};
         const pixel_Type symbol_off = {0, 0, 0};
-        const pixel_Type symbol_winner = {255, 0, 0};
-        const pixel_Type symbol_looser = {0, 255, 0};
-        const uint8_t brighness = 30; // TODO: To use
+        const pixel_Type symbol_winner = {255*brighness/100, 0, 0};
+        const pixel_Type symbol_looser = {0, 255*brighness/100, 0};
+        const uint8_t brighness = 40; // TODO: Better use
 
     private:
         Game_States state;
