@@ -38,6 +38,12 @@ bool WS2812B::setColorRange(uint8_t index, uint8_t range, s_color color) {
   return true;
 }
 
+// TODO: Should not exists
+bool WS2812B::setMemory(uint8_t *buffer, uint8_t size) {
+  memcpy(pixel_array, buffer, size * color_data_bytes);
+  return true;
+}
+
 void WS2812B::update() {
   ws2812_sendarray(pixel_array, led_number * color_data_bytes);
 }

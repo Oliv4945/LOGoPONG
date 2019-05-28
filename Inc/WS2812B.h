@@ -16,6 +16,7 @@ public:
   bool setColorAll(s_color color);
   bool setColorIndex(uint8_t index, s_color color);
   bool setColorRange(uint8_t index, uint8_t range, s_color color);
+  bool setMemory(uint8_t *buffer, uint8_t size);
   void update();
 
 private:

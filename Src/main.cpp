@@ -24,7 +24,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <string.h>
-// #include "light_ws2812_cortex.h"
+#include <gameEngine.h>
+#include "pingpong.h"
 #include "WS2812B.h"
 
 /* USER CODE END Includes */
@@ -74,7 +75,10 @@ int main(void)
   s_color green = {0x1F, 0x00, 0x00};
   s_color red = {0x00, 0x1F, 0x00};
   s_color blue = {0x00, 0x00, 0x1F};
-  WS2812B leds(28);
+  WS2812B leds(25);
+  // Game
+  Game_States game_state;
+  PingPong game(25);
 
   /* USER CODE END 1 */
   
@@ -104,13 +108,16 @@ int main(void)
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
 
+  leds.setMemory(game.pixel_array, game.pixel_total);
+  leds.update();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    leds.setColorAll(blue);
+    /*leds.setColorAll(blue);
     leds.setColorIndex(3, green),
     leds.update();
     LL_mDelay(1000);
@@ -120,7 +127,14 @@ int main(void)
     LL_mDelay(1000);
     leds.setColorAll(red);
     leds.update();
-    LL_mDelay(1000);
+    LL_mDelay(1000);*/
+    game_state = game.process(0);
+    leds.setMemory(game.pixel_array, game.pixel_total);
+    leds.update();
+    if (game_state != PLAY) {
+      while(1);
+    }
+    LL_mDelay(100);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
