@@ -56,6 +56,8 @@
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_I2C1_Init(void);
+static void animationStart(WS2812B *leds);
+
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -120,6 +122,8 @@ int main(void)
   pMyDevice->I2cDevAddr      = 0x52;
   pMyDevice->comms_type      =  1;
   pMyDevice->comms_speed_khz =  400;
+
+  animationStart(&leds);
 
   /*if(Status == VL53L0X_ERROR_NONE) {
     printf ("Call of VL53L0X_DataInit\n");
@@ -307,6 +311,23 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+void animationStart(WS2812B *leds) {
+  s_color red  = {0, 255, 0};
+  s_color green  = {255, 0, 0};
+  s_color mix = {0, 0, 0};
+
+  for (uint8_t i=0; i<101; i++) {
+    mix.r = red.r*(100-i)/100+green.r*i/100;
+    mix.g = red.g*(100-i)/100+green.g*i/100;
+    mix.b = red.b*(100-i)/100+green.b*i/100;
+    leds->setColorRange(61/3, 61/3, mix);
+    leds->update();
+    LL_mDelay(20);
+  }
+
+  LL_mDelay(750);
+}
 
 /* USER CODE END 4 */
 

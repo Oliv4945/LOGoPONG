@@ -11,9 +11,9 @@ typedef enum {
 } Game_States;
 
 typedef struct {
-    const uint8_t r;
-    const uint8_t g;
-    const uint8_t b;
+    uint8_t r;
+    uint8_t g;
+    uint8_t b;
 } pixel_Type;
 
 
@@ -25,6 +25,7 @@ class GameEngine {
 
         uint8_t pixel_total;
         uint8_t *pixel_array;
+        float speed_factor;
 
         enum {
             BUTTON_PLAYER_NO,
@@ -38,11 +39,12 @@ class GameEngine {
         void setPlayerWin(uint8_t player);
 
         const pixel_Type symbol_end = {255*brighness/100, 255*brighness/100, 0};
-        const pixel_Type symbol_zone = {153*brighness/100, 255*brighness/100, 51*brighness/100};
+        const pixel_Type symbol_zone_player_1 = {153*brighness/100, 255*brighness/100, 51*brighness/100};
+        const pixel_Type symbol_zone_player_2 = {255*brighness/100, 255*brighness/100, 0};
         const pixel_Type symbol_off = {0, 0, 0};
         const pixel_Type symbol_winner = {255*brighness/100, 0, 0};
         const pixel_Type symbol_looser = {0, 255*brighness/100, 0};
-        const uint8_t brighness = 40; // TODO: Better use
+        const float brighness = 30; // TODO: Better use
 
     private:
         Game_States state;

@@ -28,6 +28,8 @@ extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
+#include "stm32l0xx.h"
+#include "stm32l0xx_ll_i2c.h"
 #include "stm32l0xx_ll_crs.h"
 #include "stm32l0xx_ll_rcc.h"
 #include "stm32l0xx_ll_bus.h"
@@ -37,7 +39,6 @@ extern "C" {
 #include "stm32l0xx_ll_utils.h"
 #include "stm32l0xx_ll_pwr.h"
 #include "stm32l0xx_ll_dma.h"
-#include "stm32l0xx.h"
 #include "stm32l0xx_ll_gpio.h"
 
 #if defined(USE_FULL_ASSERT)
@@ -74,6 +75,10 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define WS2812_Pin LL_GPIO_PIN_9
 #define WS2812_GPIO_Port GPIOA
+#define PLAYER1_WHITE_Pin LL_GPIO_PIN_10
+#define PLAYER1_WHITE_GPIO_Port GPIOA
+#define PLAYER2_GREEN_Pin LL_GPIO_PIN_15
+#define PLAYER2_GREEN_GPIO_Port GPIOA
 #ifndef NVIC_PRIORITYGROUP_0
 #define NVIC_PRIORITYGROUP_0         ((uint32_t)0x00000007) /*!< 0 bit  for pre-emption priority,
                                                                  4 bits for subpriority */
