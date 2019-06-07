@@ -44,7 +44,7 @@ class GameEngine {
         const pixel_Type symbol_off = {0, 0, 0};
         const pixel_Type symbol_winner = {255*brighness/100, 0, 0};
         const pixel_Type symbol_looser = {0, 255*brighness/100, 0};
-        const float brighness = 30; // TODO: Better use
+        const float brighness = 100; // TODO: Better use
 
     private:
         Game_States state;

@@ -16,8 +16,8 @@ class PingPong: public GameEngine {
         const pixel_Type symbol_middle = {255*brighness/100, 0, 0};
         const pixel_Type symbol_ball = {0, 0, 255*brighness/100};
 
-        const float speed_increase = 0.95;
-        const float speed_zone_start = 0.8;
+        const float speed_increase = 0.92;
+        const float speed_zone_start = 0.85;
         const float speed_zone_end = 1.3;
 
         static bool checkZone(uint8_t ball_position, uint8_t start, uint8_t end);

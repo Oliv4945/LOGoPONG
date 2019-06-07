@@ -163,7 +163,7 @@ int main(void)
       LL_mDelay(5000);
       NVIC_SystemReset();
     }
-    LL_mDelay(50*game.speed_factor);
+    LL_mDelay(65*game.speed_factor);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -316,6 +316,10 @@ void animationStart(WS2812B *leds) {
   s_color red  = {0, 255, 0};
   s_color green  = {255, 0, 0};
   s_color mix = {0, 0, 0};
+
+  leds->setColorRange(61/3, 61/3, red);
+  leds->update();
+  LL_mDelay(750);
 
   for (uint8_t i=0; i<101; i++) {
     mix.r = red.r*(100-i)/100+green.r*i/100;

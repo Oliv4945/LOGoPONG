@@ -34,9 +34,9 @@ bool PingPong::checkZone(uint8_t ball_position, uint8_t start, uint8_t end) {
 void PingPong::ballAnimation(uint8_t position) {
     pixel_Type faded;
     int8_t trail_dir = dir * -1;
-    // memcpy(pixel_array + position * sizeof(symbol_ball), &symbol_ball, sizeof(symbol_ball));
+    memcpy(pixel_array + position * sizeof(symbol_ball), &symbol_ball, sizeof(symbol_ball));
 
-    for (uint8_t i=0; i<5; i++) {
+    /*for (uint8_t i=0; i<5; i++) {
         if ((position+trail_dir*i < 0) || (position+trail_dir*i >= pixel_total)) {
             return;
         }
@@ -44,9 +44,9 @@ void PingPong::ballAnimation(uint8_t position) {
         faded.g = symbol_ball.g/(i+1);
         faded.b = symbol_ball.b/(i+1);
         memcpy(pixel_array + (position+trail_dir) * sizeof(faded), &faded, sizeof(faded));
-    }
+    }*/
 
-    /*
+
     if ((position+trail_dir < 0) || (position+trail_dir >= pixel_total)) {
         return;
     }
@@ -72,7 +72,7 @@ void PingPong::ballAnimation(uint8_t position) {
     faded.g = symbol_ball.g/4;
     faded.b = symbol_ball.b/4;
     memcpy(pixel_array + (position+trail_dir) * sizeof(faded), &faded, sizeof(faded));
-    */
+
 
 }
 
